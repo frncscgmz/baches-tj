@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'high_voltage', '~> 2.1.0'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'
