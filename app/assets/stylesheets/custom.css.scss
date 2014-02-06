@@ -100,3 +100,12 @@ footer {
       }
    }
 }
+
+/* Map fixes */
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 
