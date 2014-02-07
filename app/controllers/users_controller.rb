@@ -1,23 +1,34 @@
 class UsersController < ApplicationController
-  def new
-     @user = User.new
-  end
+   before_action :signed_in_user, 
+      only: [:index, :edit, :update, :destroy]
+   before_action :correct_user, only: [:edit, :update]
 
-  def create
-     @user = User.new(user_params)
-     if @user.save
-        sign_in @user
-        flash[:success] = "Bienvenido!"
-        redirect_to root_url
-     else
-        render 'new'
-     end
-  end
+   def new
+      @user = User.new
+   end
 
-  private
+   def create
+      @user = User.new(user_params)
+      if @user.save
+         sign_in @user
+         flash[:success] = "Bienvenido!"
+         redirect_to root_url
+      else
+         render 'new'
+      end
+   end
 
-  def user_params
-     params.require(:user).permit(:name, :email, 
-                                  :password, :password_confirmation)
-  end
+   private
+
+   def user_params
+      params.require(:user).permit(:name, :email, 
+                                   :password, :password_confirmation)
+   end
+
+   # Before filters
+
+   def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+   end
 end
