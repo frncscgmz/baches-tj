@@ -1,5 +1,5 @@
 BachesTj::Application.routes.draw do
-   resources :baches,   only: [:index]
+   resources :baches,   only: [:index, :create]
    resources :users,    only: [:create, :destroy]
    resources :sessions, only: [:new, :create, :destroy]
 
