@@ -19,7 +19,7 @@
    var infoWindow;
 
    handler = Gmaps.build('Google');
-   handler.buildMap({ provider: { maxZoom: 11 }, internal: {id: 'mapcanvas'}}, function(){
+   handler.buildMap({ provider: { minZoom: 12 }, internal: {id: 'mapcanvas'}}, function(){
          markers = handler.addMarkers(<%=raw @hash.to_json %>);
          handler.bounds.extendWith(markers);
          handler.fitMapToBounds();
