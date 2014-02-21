@@ -15,6 +15,7 @@ gem 'figaro'
 gem 'high_voltage', '~> 2.1.0'
 gem 'gmaps4rails'
 gem 'paperclip', "~> 4.1"
+gem 'geocoder'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'
