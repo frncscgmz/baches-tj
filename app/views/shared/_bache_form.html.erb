@@ -1,8 +1,8 @@
 <%= form_for(Bache.new) do |f| %>
    <%= render 'shared/error_messages', object: f.object %>
    <div class="field">
-      <%= f.text_field :latitude, placeholder: "Latitud" %>
-      <%= f.text_field :longitude, placeholder: "Longitud" %>
+      <%= f.hidden_field :latitude, placeholder: "Latitud" %>
+      <%= f.hidden_field :longitude, placeholder: "Longitud" %>
       <%= f.text_area :desc, placeholder: "Descipcion..." %>
    </div>
    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
