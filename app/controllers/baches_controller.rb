@@ -7,7 +7,7 @@ class BachesController < ApplicationController
       @hash   = Gmaps4rails.build_markers(@baches) do |bache, marker|
          marker.lat bache.latitude
          marker.lng bache.longitude
-         marker.infowindow bache.desc
+         marker.infowindow gmaps4rails_infowindow(bache)
       end
    end
 
@@ -19,6 +19,10 @@ class BachesController < ApplicationController
       else
          flash.now[:error] = "Error en creacion de bache."
       end
+   end
+
+   def gmaps4rails_infowindow(bache)
+      "#{bache.desc}<br/><img src=\"#{bache.foto.url(:thumb)}\">"
    end
 
    private
