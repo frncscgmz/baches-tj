@@ -1,9 +1,10 @@
-<%= form_for(Bache.new) do |f| %>
+<%= form_for(Bache.new, :html => { :multipart => true }) do |f| %>
    <%= render 'shared/error_messages', object: f.object %>
    <div class="field">
       <%= f.hidden_field :latitude, placeholder: "Latitud" %>
       <%= f.hidden_field :longitude, placeholder: "Longitud" %>
       <%= f.text_area :desc, placeholder: "Descipcion..." %>
+      <%= f.file_field :foto %>
    </div>
    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

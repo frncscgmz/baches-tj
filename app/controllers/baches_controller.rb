@@ -25,7 +25,7 @@ class BachesController < ApplicationController
 
    def bache_params
       params.require(:bache).permit(:desc, :latitude, 
-                                    :longitude)
+                                    :longitude, :foto)
    end
 
    def correct_user
