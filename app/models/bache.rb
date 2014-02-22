@@ -10,4 +10,8 @@ class Bache < ActiveRecord::Base
       :medium => "500x500>", :thumb => "100x100>" }
       #, :default_url => "/images/:style/missing.png"
    validates_attachment_content_type :foto, :content_type => /\Aimage\/.*\Z/
+
+   reverse_geocoded_by :latitude, :longitude,
+      :address => :location
+   after_validation :reverse_geocode
 end
