@@ -22,7 +22,10 @@ class BachesController < ApplicationController
    end
 
    def gmaps4rails_infowindow(bache)
-      "#{bache.desc}<br/><img src=\"#{bache.foto.url(:thumb)}\">"
+      "<div id=\"content\"><img style=\"padding-right: 10px\" \
+      src=\"#{bache.foto.url(:thumb)}\"><div style=\"float: right\">\
+      #{bache.desc}<br/>#{bache.location}<br/>Creado por \
+      #{bache.user.name}</div></div>"
    end
 
    private
