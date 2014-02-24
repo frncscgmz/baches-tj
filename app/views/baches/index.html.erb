@@ -26,6 +26,20 @@
          handler.map.centerOn({ lat: 32.5333, lng: -117.017 });
    });
 
+   // Limitaciones de movimiento
+   var allowedBounds = new google.maps.LatLngBounds(
+         new google.maps.LatLng(32.367824,-117.218334), 
+         new google.maps.LatLng(32.569189,-116.632338)
+   );
+   var lastValidCenter = handler.getMap().getCenter();
+   google.maps.event.addListener(handler.getMap(), 'center_changed', function() {
+      if (allowedBounds.contains(handler.getMap().getCenter())) {
+         lastValidCenter = handler.getMap().getCenter();
+            return; 
+      }
+      handler.getMap().panTo(lastValidCenter);
+   });
+
 <% if signed_in? %>
    infoWindow = new google.maps.InfoWindow({
       content: '<%= escape_javascript(render 'shared/bache_form') %>'
