@@ -19,6 +19,7 @@ gem 'geocoder'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'twitter'
+gem 'nifty-generators'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'
