@@ -16,6 +16,9 @@ gem 'high_voltage', '~> 2.1.0'
 gem 'gmaps4rails'
 gem 'paperclip', "~> 4.1"
 gem 'geocoder'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'
