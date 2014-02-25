@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,:omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+   # Include default devise modules. Others available are:
+   # :confirmable, :lockable, :timeoutable and :omniauthable
+   devise :database_authenticatable, :registerable,:omniauthable,
+      :recoverable, :rememberable, :trackable, :validatable
    has_many :authentications
    has_many :bache, dependent: :destroy
 
@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
       uniqueness: { case_sensitive: false }
    has_secure_password
    validates :password, length: { minimum: 6 }
+
+   def apply_omniauth(omni)
+      authentications.build(:provider => omni['provider'],
+         :uid => omni['uid'],
+         :token => omni['credentials'].token,
+         :token_secret => omni['credentials'].secret)
+   end
 
    def User.new_remember_token
       SecureRandom.urlsafe_base64
