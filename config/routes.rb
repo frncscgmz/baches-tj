@@ -1,4 +1,5 @@
 BachesTj::Application.routes.draw do
+  devise_for :users
    resources :baches,   only: [:index, :create]
    resources :users,    only: [:create, :destroy]
    resources :sessions, only: [:new, :create, :destroy]
