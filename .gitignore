@@ -31,3 +31,6 @@
 /config/unicorn_local.rb
 /config/initializers
 /public/system
+
+# Ignore application configuration
+/config/application.yml
