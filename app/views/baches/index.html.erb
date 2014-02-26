@@ -40,7 +40,7 @@
       handler.getMap().panTo(lastValidCenter);
    });
 
-<% if signed_in? %>
+<% if user_signed_in? %>
    infoWindow = new google.maps.InfoWindow({
       content: '<%= escape_javascript(render 'shared/bache_form') %>'
    });
