@@ -35,7 +35,8 @@ class AuthenticationsController < ApplicationController
    end
 
    def create
-      @authentication = Authentication.new(params[:authentication])
+      raise request.env["omniauth.auth"].to_yaml
+      @authentication = Authentication.new(authentication_params)
       if @authentication.save
          redirect_to authentications_url, :notice => "Successfully created authentication."
       else
@@ -47,5 +48,11 @@ class AuthenticationsController < ApplicationController
       @authentication = Authentication.find(params[:id])
       @authentication.destroy
       redirect_to authentications_url, :notice => "Successfully destroyed authentication."
+   end
+
+   private
+
+   def authentication_params
+      params.require(:authentication).permit(:provider, :uid, :token, :token_secret, :user_id)
    end
 end

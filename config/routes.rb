@@ -7,6 +7,8 @@ BachesTj::Application.routes.draw do
    #resources :users,    only: [:create, :destroy]
    #resources :sessions, only: [:new, :create, :destroy]
 
+   match '/auth/:provider/callback' => 'authentications#create', via: 'get'
+
    root to: 'baches#index', via: 'get'
 
    #match '/signup',  to: 'users#new',        via: 'get'
