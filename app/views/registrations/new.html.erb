@@ -3,6 +3,9 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name %></div>
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -14,5 +17,8 @@
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
+
+<%= render 'layouts/footer' %>
+   <%= debug(params) if Rails.env.development? %>
 
 <%= render "devise/shared/links" %>
