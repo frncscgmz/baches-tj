@@ -15,7 +15,6 @@ BachesTj::Application.routes.draw do
    #match '/signin',  to: 'sessions#new',     via: 'get'
    #match '/signout', to: 'sessions#destroy', via: 'delete'
 
-   match '/help',    to: 'static_pages#help',  via: 'get'
    match '/about',   to: 'static_pages#about', via: 'get'
 
 end
