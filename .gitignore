@@ -19,7 +19,7 @@
 *.rbc
 .DS_Store
 **.orig
-/config/database.yml
+#/config/database.yml
 /config/config.yml
 /config/facebook.yml
 /config/deploy.rb
@@ -29,8 +29,8 @@
 /config/unicorn.god
 /config/unicorn.rb
 /config/unicorn_local.rb
-/config/initializers
+#/config/initializers
 /public/system
 
 # Ignore application configuration
-/config/application.yml
+#/config/application.yml
