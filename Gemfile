@@ -18,6 +18,7 @@ gem 'paperclip', "~> 4.1"
 gem 'geocoder'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'twitter'
 gem 'nifty-generators'
 gem 'aws-sdk'
