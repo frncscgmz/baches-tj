@@ -26,7 +26,8 @@ class BachesController < ApplicationController
       view_context.image_tag(bache.foto.url(:thumb)), bache.foto.url(:original)}\
       <div style=\"float: right\">\
       #{bache.desc}<br/>#{bache.location}<br/>Creado por \
-      #{bache.user.name}</div></div>"
+      #{bache.user.name}<br/> Modificado en: \
+      #{bache.updated_at.strftime("%B %d, %Y")}</div></div>"
    end
 
    private
