@@ -2,7 +2,7 @@ BachesTj::Application.routes.draw do
    devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
       controllers: {omniauth_callbacks: "authentications",
          registrations: "registrations"}
-   resources :baches,   only: [:index, :create]
+   resources :baches,   only: [:index, :create, :destroy]
    resources :authentications
    #resources :users,    only: [:create, :destroy]
    #resources :sessions, only: [:new, :create, :destroy]
