@@ -1,6 +1,6 @@
 class BachesController < ApplicationController
    before_action :signed_in_user, only: [:create, :destroy]
-   #before_action :correct_user,   only: :destroy
+   before_action :correct_user,   only: :destroy
 
    def index
       @baches = Bache.all
@@ -8,6 +8,7 @@ class BachesController < ApplicationController
          marker.lat bache.latitude
          marker.lng bache.longitude
          marker.infowindow gmaps4rails_infowindow(bache)
+         marker.json({:id => bache.id })
       end
    end
 
@@ -34,8 +35,15 @@ class BachesController < ApplicationController
       #{bache.desc}<br/>#{bache.location}<br/>Creado por \
       #{bache.user.name}<br/> Modificado en: \
       #{bache.updated_at.strftime("%B %d, %Y")}<br/>\
-      #{view_context.link_to "delete", @bache, method: :delete,\
+      #{view_context.link_to "Borrar", @bache, method: :delete,\
       data: { confirm: "You sure?" }}</div></div>"
+      else
+      "<div id=\"content\">#{view_context.link_to \
+      view_context.image_tag(bache.foto.url(:thumb)), bache.foto.url(:original)}\
+      <div style=\"float: right\">\
+      #{bache.desc}<br/>#{bache.location}<br/>Creado por \
+      #{bache.user.name}<br/> Modificado en: \
+      #{bache.updated_at.strftime("%B %d, %Y")}<br/></div></div>"
       end
    end
 
@@ -47,7 +55,7 @@ class BachesController < ApplicationController
    end
 
    def correct_user
-      @bache = current_user.bache.find_by(id: params[:id])
+      @bache = Bache.find_by(id: params[:id])
       redirect_to root_url if @bache.nil?
    end
 end
